@@ -17,7 +17,7 @@ const like = async (page, title, expectedLikes) => {
   const element = await page.getByText(title).locator('..')
   await element.getByRole('button', { name: 'like' }).click()
   
-  const newPage = page.getByText(title).locator('..')
+  const newPage = await page.getByText(title).locator('..')
   await newPage.getByText(`likes ${expectedLikes}`).waitFor()
 }
 
